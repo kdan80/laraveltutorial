@@ -10,7 +10,11 @@
             >
                 <img
                     class="w-48 mr-6 mb-6"
-                    src="{{asset('images/no-image.png')}}"
+                    src="{{
+                        $listing->logo 
+                            ? asset('storage/public/' . $listing->logo)
+                            : asset('/images/no-image.png')
+                        }}"
                     alt=""
                 />
 
@@ -45,6 +49,11 @@
                     </div>
                 </div>
             </div>
+        </x-card>
+        <x-card class="mt-4 p-2 flex space-x-6">
+            <a href="/listings/{{$listing->id}}/edit">
+                <i class="fa-solid fs-pencil"></i>Edit
+            </a>
         </x-card>
     </div>
 </x-layout>
