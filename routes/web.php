@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ListingController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
+use Illuminate\Http\Request;
 use PhpParser\Node\Expr\List_;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,14 @@ Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 // Update listing
 Route::put('/listings/{listing}', [ListingController::class, 'update']);
 
+// Delete listing
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
 // Single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// Show register form
+Route::get('/register', [UserController::class, 'create']);
+
+// Create a user
+Route::post('/users', [UserController::class, 'store']);
