@@ -22,7 +22,7 @@ use App\Http\Controllers\ListingController;
 Route::get('/', [ListingController::class, 'index']);
 
 // Show create  form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // Store listing data
 Route::post('/listings', [ListingController::class, 'store']);
@@ -47,3 +47,9 @@ Route::post('/users', [UserController::class, 'store']);
 
 // Logout
 Route::post('/logout', [UserController::class, 'logout']);
+ 
+// Login page
+Route::get('/login', [UserController::class, 'login'])->name('login');
+
+// Login
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
